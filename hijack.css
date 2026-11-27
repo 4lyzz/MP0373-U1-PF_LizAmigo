@@ -1,0 +1,226 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background: #e9b58b;
+  font-family: "Doto";
+  color: #333;
+  font-size: 16px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  counter-reset: encerts;
+}
+
+header {
+  width: 100%;
+  height: 50px;
+  background-color: bisque;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-image: url('assets/tejado.jpg');
+  background-size: 300px;
+  color: white;
+}
+
+header h1 {
+  font-size: 1.8em;
+  background-color: rgb(234, 106, 42);
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('assets/wall.jpg');
+  background-size: cover;
+}
+
+footer {
+  width: 100%;
+  height: 60px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-image: url('assets/acera.jpg');
+  background-size: 300px;
+}
+
+footer h3 {
+  font-size: 1.6em;
+  padding: 0 10px 0 10px;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+footer a {
+  font-size: 0.8em;
+  padding: 0 10px 0 10px;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.encerts-totals::after {
+  content: counter(encerts);
+}
+
+.fachada {
+  max-width: 800px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  padding: 20px;
+}
+
+.ventana {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  outline: 4px solid black;
+  list-style: none;
+  overflow: hidden;
+  background: radial-gradient(circle, rgba(252, 189, 70, 1) 0%, rgba(0, 0, 0, 1) 60%);
+}
+
+.ladron {
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  margin: auto;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  background-image: url('assets/ladron.png');
+  background-size: cover;
+  background-position: center;
+  appearance: none;
+  cursor: crosshair;
+  transition: filter 1s linear;
+  animation: amagar-lladre 2s ease-in-out infinite;
+}
+
+.ladron:checked {
+  filter: opacity(0.8) hue-rotate(180deg);
+  counter-increment: encerts;
+}
+
+.ladron:checked::after {
+  content: "+1!";
+  position: absolute;
+  top: 10px;
+  right: -25px;
+  color: white;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.persiana {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  z-index: 2;
+  background-image: url('assets/persiana.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.ventana:nth-child(1) .ladron {
+  animation-duration: 3s;
+}
+
+.ventana:nth-child(2) .ladron {
+  animation-duration: 1.8s;
+}
+
+.ventana:nth-child(3) .ladron {
+  animation-duration: 2.5s;
+}
+
+.ventana:nth-child(4) .ladron {
+  animation-duration: 1.5s;
+}
+
+.ventana:nth-child(5) .ladron {
+  animation-duration: 2.8s;
+}
+
+.ventana:nth-child(6) .ladron {
+  animation-duration: 1.9s;
+}
+
+.ventana:nth-child(7) .ladron {
+  animation-duration: 3.4s;
+}
+
+.ventana:nth-child(8) .ladron {
+  animation-duration: 2.1s;
+}
+
+.ventana:nth-child(9) .ladron {
+  animation-duration: 1.7s;
+}
+
+@keyframes amagar-lladre {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 40%;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+.game-over {
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  opacity: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    #1db9ff,
+    #1db9ff 25px,
+    #b6ff2e 25px,
+    #b6ff2e 50px
+  );
+  animation: appear 0.25s forwards;
+  animation-delay: 10s;
+}
+
+@keyframes appear {
+  0% {
+    top: -100vh;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
